@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="text-dark text-center">Register</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onRegister()" validate>                
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input name="email" type="email" class="form-control form-control-custom" placeholder="email@example.com" formControlName="email" ngModel email="true" required [ngClass]="{'is-valid' : emailOkey === is.valid,'is-invalid' : emailOkey === is.invalid || emailOkey === is.empty}">
+                        <p *ngIf="emailOkey === is.empty" class="text-danger">The email is required.</p>
+                        <p *ngIf="emailOkey === is.invalid" class="text-danger">This is not a valid email.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control form-control-custom" formControlName="password" required minlength="6" maxlength="20" 
+                            [ngClass]="{
+                                'is-valid' : passwordOkey === is.valid && passAreEquals === true,
+                                'is-invalid' : passwordOkey === is.invalid || passwordOkey === is.empty || passAreEquals === false}">                         
+                        <p *ngIf="passwordOkey === is.empty" class="text-danger">The password is required.</p>
+                        <p *ngIf="passwordOkey === is.invalid" class="text-danger">This is not a valid password.</p>
+
+                        <label for="password">Confirm Password</label>
+                        <input type="password" class="form-control form-control-custom" formControlName="confirmPassword" required minlength="6" maxlength="20" 
+                            [ngClass]="{
+                                'is-valid' : confirmPasswordOkey === is.valid && passAreEquals === true,
+                                'is-invalid' : confirmPasswordOkey === is.invalid || confirmPasswordOkey === is.empty || passAreEquals === false}">
+                        <p *ngIf="confirmPasswordOkey === is.empty" class="text-danger">The confirm password is required.</p>
+                        <p *ngIf="confirmPasswordOkey === is.invalid" class="text-danger">This is not a valid confirm password.</p>
+                        <small class="form-text text-muted">The password must have at least 6 characters and a maximum of 20.</small>
+                        <p *ngIf="passAreEquals === false" class="text-danger">The passwords are not equals.</p>
+                    </div>
+        
+                    <button type="submit" class="btn btn-dark btn-block">Register</button>
+                </form>
+
+                <div class="container text-center mt-3">
+                    <p>Do you have an account? <a [routerLink]="['/login']">Login</a></p>
+                </div>   
+            </div>
+        </div>
+    </div>
+</div>

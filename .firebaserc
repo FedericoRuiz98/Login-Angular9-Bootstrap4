@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-angular9-5b3fc": {
+      "hosting": {
+        "login": [
+          "login-angular9-5b3fc"
+        ]
+      }
+    }
+  }
+}
